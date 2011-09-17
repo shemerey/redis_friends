@@ -1,0 +1,60 @@
+= Redis Friends
+
+Redis Friends adds Redis-backed storage to keep track of a user's friends and friends-of-friends
+
+== Features
+
+* Make and break friendships
+
+* Retrieve lists of friends and friends-of-friends
+
+* Determine whether a user is a friend of another user
+
+* Find mutual friends of two users.
+
+== Requirements
+
+* Rails 3.0.9
+
+* A Redis server must be running
+
+* redis gem, >= 2.2.2
+
+== Install
+
+Add this line to your Gemfile:
+
+  gem 'redis_friends', :git => 'git://github.com/al-evans/redis_friends.git'
+  
+Bundle:
+  
+  % bundle
+  
+== Use
+
+For example:
+
+  class User < ActiveRecord::Base
+    include RedisFriends::Friends
+    [...]
+  end
+
+Adds the following instance methods:
+
+* become_friends_with(other_user)
+
+* drop_friendship_with(other_user)
+
+* friends_ids
+
+* friends
+
+* is_friend_of?(other_user)
+
+* friends_of_friends_ids
+
+* friends_of_friends
+
+* ids_of_mutual_friends_with(other_user)
+
+* mutual_friends_with(other_user)
