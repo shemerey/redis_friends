@@ -63,9 +63,11 @@ module RedisFriends
         :db => 1,
       }
       
-      @@key_prefix = 'friend_network'
+      @@key_prefix = 'redis_friends'
       
       def set_redis_options(new_options)
+        pfx = new_options.delete(:key_prefix)
+        @@key_prefix = pfx if pfx
         if new_options != @@redis_options
           @@redis_connection.quit rescue nil
           @redis_connection = nil
@@ -126,7 +128,7 @@ module RedisFriends
       end
     
       def key_prefix
-        'friend_network'
+        @@key_prefix
       end
     
     end

@@ -30,6 +30,10 @@ Bundle:
   
   % bundle
   
+== Caution
+
+Redis Friends does NOT provide any facilities for reconstructing the database of friends' connections if the redis dumpfile is lost. It would be prudent to keep records of user actions that result in the making or breaking of friendships!
+  
 == Use
 
 For example:
@@ -58,3 +62,23 @@ Adds the following instance methods:
 * ids_of_mutual_friends_with(other_user)
 
 * mutual_friends_with(other_user)
+
+== Configuration
+
+The parameters used for the redis connection, plus the key prefix used for user_friends data, can be customized. By default, the Redis connection is made using the following parameters:
+
+  @@redis_options = {
+    :host => 'localhost',
+    :port => '6379',
+    :db => 1,
+  }
+
+The default key prefix is:
+
+  @@key_prefix = 'redis_friends
+  
+Use an application configuration entry to change these values. For example, to set the database used to 4 and the key prefix to "my_app_rf":
+
+  MyApp::Application.config.redis_options = {:db => 4, :key_prefix => 'my_app_rf'}
+  
+("MyApp" should be changed to your application's name.)
