@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "This Redis-backed mixin adds methods to any user class for making and breaking friendships and for tracking friends and friends-of-friends"
 
   s.required_rubygems_version = ">= 1.3.6"
-  s.add_dependency "rails", "3.0.9"
+  s.add_dependency "rails", ">=3.0.9"
   s.add_dependency "redis", ">= 2.2.2"
 
   s.require_paths = ['lib', 'test']
